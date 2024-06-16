@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name                WME Route Speeds (MapOMatic fork)
+// @name                WME Route Speeds (MapOMatic fork) LATLON FIX
 // @description         Shows segment speeds in a route.
 // @include             /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
 // @version             2024.01.19.001
@@ -490,8 +490,8 @@
 			var iconA = new di("routespeedsmarkerA");
 			var iconB = new di("routespeedsmarkerB");
 
-			p1 = new OpenLayers.Geometry.Point(lon1, lat1).transform(epsg4326, epsg900913);
-			p2 = new OpenLayers.Geometry.Point(lon2, lat2).transform(epsg4326, epsg900913);
+			p1 = new OpenLayers.Geometry.Point(lat1, lon1).transform(epsg4326, epsg900913);
+			p2 = new OpenLayers.Geometry.Point(lat2, lon2).transform(epsg4326, epsg900913);
 
 			var lonlatA = new OpenLayers.LonLat(p1.x, p1.y);
 			var lonlatB = new OpenLayers.LonLat(p2.x, p2.y);
@@ -592,8 +592,8 @@
 			markerLayer.addMarker(markerB);
 		}
 		else {
-			p1 = new OpenLayers.Geometry.Point(lon1, lat1).transform(epsg4326, epsg900913);
-			p2 = new OpenLayers.Geometry.Point(lon2, lat2).transform(epsg4326, epsg900913);
+			p1 = new OpenLayers.Geometry.Point(lat1, lon1).transform(epsg4326, epsg900913);
+			p2 = new OpenLayers.Geometry.Point(lat2, lon2).transform(epsg4326, epsg900913);
 
 			markerA.lonlat.lon = p1.x;
 			markerA.lonlat.lat = p1.y;
